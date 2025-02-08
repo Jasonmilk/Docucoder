@@ -26,9 +26,9 @@
         └── login/
             └── 登录流程.md <!-- @v1.1.2 -->
     ```
-```
 
 #### 2. **版本感知文档系统**
+
 ```python
 # version_tracker.py 核心逻辑
 def generate_folded_doc():
@@ -124,11 +124,67 @@ curl -s https://raw.githubusercontent.com/Jasonmilk/Docucoder/refs/heads/main/v2
 3. **验证系统状态**
 ```bash
 ./health_check.sh --mode=no-ai
+```
 # 预期输出：
 [✓] 文档结构生成器：v2.1.3
 [✓] 版本追踪服务：已连接Git
 [!] AI服务状态：备用模式（今日调用0次）
 
 ---
+# 目目录结构
+project-root/
+├── .vscode/                  # IDE配置
+│   └── settings.json         # VS Code/Cursor专用配置
+├── .git/hooks/               # Git自动化钩子
+│   └── post-commit           # 提交后触发脚本
+├── scripts/                  # 核心工具脚本
+│   ├── version_tracker.py    # 版本追踪主程序
+│   └── pre_check.sh          # AI调用预处理
+├── configs/                  # 配置文件
+│   ├── .aitoken.toml         # AI调用规则 
+│   └── version_rules.yaml    # 版本生成规则
+└── docs/                     # 自动生成文档
+    └── structure.md          # 折叠式项目地图
+
 
 该方案通过 **本地规则引擎+轻量级模型** 的分级策略，在保证核心功能的前提下将AI依赖度降低至10%以下。对于80%的日常变更，完全可通过文件系统监听和Git历史分析实现自动化，仅在复杂架构变更时调用免费AI模型。
+
+
+# 相关代码补充展示:
+
+#### 3. `post-commit` (保存到 `.git/hooks/`)
+```bash
+#!/bin/bash
+# Git提交后自动触发
+
+# 生成最新结构文档
+python3 scripts/version_tracker.py --output docs/structure.md
+
+# 更新版本号
+if [ -f "configs/version_rules.yaml" ]; then
+    python3 scripts/version_tracker.py --auto-increment
+fi
+
+# 提交生成的文档
+git add docs/structure.md
+git commit --amend --no-edit
+```
+
+#### 4. `settings.json` (保存到 `.vscode/`)
+```jsonc
+{
+    "versionLens.enablePackageManager": false,
+    "markdown.preview.foldHeading2ByDefault": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.vscode": false
+    },
+    "projectManager.sortList": [
+        {
+            "name": "核心模块",
+            "paths": ["src/core"],
+            "group": "main"
+        }
+    ]
+}
+```
