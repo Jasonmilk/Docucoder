@@ -131,7 +131,8 @@ curl -s https://raw.githubusercontent.com/Jasonmilk/Docucoder/refs/heads/main/in
 [!] AI服务状态：备用模式（今日调用0次）
 
 ---
-# 目录结构
+### 目录结构
+```
 project-root/
 ├── .vscode/                  # IDE配置
 │   └── settings.json         # VS Code/Cursor专用配置
@@ -146,12 +147,12 @@ project-root/
 ├── docs/                     # 自动生成文档
 │    └── structure.md         # 折叠式项目地图
 └── install.sh                # 自动化脚本
-
+```
 
 该方案通过 **本地规则引擎+轻量级模型** 的分级策略，在保证核心功能的前提下将AI依赖度降低至10%以下。对于80%的日常变更，完全可通过文件系统监听和Git历史分析实现自动化，仅在复杂架构变更时调用免费AI模型。
 
 
-# 相关代码补充展示:
+### 相关代码补充展示:
 
 #### 3. `post-commit` (保存到 `.git/hooks/`)
 ```bash
