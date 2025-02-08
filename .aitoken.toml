@@ -1,0 +1,14 @@
+[models]
+default = "o3-mini-free"
+fallback = "gemini-free"
+
+[thresholds]
+daily_limit = 10  # 每日最多调用次数
+min_changes = 3    # 至少3个文件变更才调用AI
+cache_ttl = 3600   # 缓存有效期1小时
+
+[rules]
+skip_patterns = [
+    "test/",
+    "docs/"
+]
