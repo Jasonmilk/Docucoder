@@ -118,7 +118,7 @@ code --install-extension yzhang.markdown-all-in-one
 
 2. **配置自动化脚本**
 ```bash
-curl -s https://docucoder.cc/install_v2.sh | bash -s --lite
+curl -s https://raw.githubusercontent.com/Jasonmilk/Docucoder/refs/heads/main/v2/install_v2.sh) | bash -s --lite
 ```
 
 3. **验证系统状态**
