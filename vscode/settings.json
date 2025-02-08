@@ -1,0 +1,15 @@
+{
+    "versionLens.enablePackageManager": false,
+    "markdown.preview.foldHeading2ByDefault": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.vscode": false
+    },
+    "projectManager.sortList": [
+        {
+            "name": "核心模块",
+            "paths": ["src/core"],
+            "group": "main"
+        }
+    ]
+}
