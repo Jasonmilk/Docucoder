@@ -131,7 +131,7 @@ curl -s https://raw.githubusercontent.com/Jasonmilk/Docucoder/refs/heads/main/in
 [!] AI服务状态：备用模式（今日调用0次）
 
 ---
-# 目目录结构
+# 目录结构
 project-root/
 ├── .vscode/                  # IDE配置
 │   └── settings.json         # VS Code/Cursor专用配置
