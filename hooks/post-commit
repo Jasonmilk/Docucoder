@@ -1,0 +1,14 @@
+#!/bin/bash
+# Git提交后自动触发
+
+# 生成最新结构文档
+python3 scripts/version_tracker.py --output docs/structure.md
+
+# 更新版本号
+if [ -f "configs/version_rules.yaml" ]; then
+    python3 scripts/version_tracker.py --auto-increment
+fi
+
+# 提交生成的文档
+git add docs/structure.md
+git commit --amend --no-edit
