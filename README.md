@@ -118,7 +118,7 @@ code --install-extension yzhang.markdown-all-in-one
 
 2. **配置自动化脚本**
 ```bash
-curl -s https://raw.githubusercontent.com/Jasonmilk/Docucoder/refs/heads/main/v2/install_v2.sh) | bash -s --lite
+curl -s https://raw.githubusercontent.com/Jasonmilk/Docucoder/refs/heads/main/install_v2.sh) | bash -s --lite
 ```
 
 3. **验证系统状态**
@@ -143,8 +143,9 @@ project-root/
 ├── configs/                  # 配置文件
 │   ├── .aitoken.toml         # AI调用规则 
 │   └── version_rules.yaml    # 版本生成规则
-└── docs/                     # 自动生成文档
-    └── structure.md          # 折叠式项目地图
+├── docs/                     # 自动生成文档
+│    └── structure.md         # 折叠式项目地图
+└── install.sh                # 自动化脚本
 
 
 该方案通过 **本地规则引擎+轻量级模型** 的分级策略，在保证核心功能的前提下将AI依赖度降低至10%以下。对于80%的日常变更，完全可通过文件系统监听和Git历史分析实现自动化，仅在复杂架构变更时调用免费AI模型。
