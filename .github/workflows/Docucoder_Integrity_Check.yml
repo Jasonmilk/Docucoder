@@ -1,0 +1,9 @@
+name: Docucoder Integrity Check
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Version Check
+        run: python scripts/version_tracker.py --validate
