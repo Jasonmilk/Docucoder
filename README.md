@@ -126,10 +126,11 @@ curl -s https://raw.githubusercontent.com/Jasonmilk/Docucoder/refs/heads/main/in
 ./health_check.sh --mode=no-ai
 ```
 # 预期输出：
+```
 [✓] 文档结构生成器：v2.1.3
 [✓] 版本追踪服务：已连接Git
 [!] AI服务状态：备用模式（今日调用0次）
-
+```
 ---
 ### 目录结构
 ```
